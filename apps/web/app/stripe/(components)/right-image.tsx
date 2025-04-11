@@ -37,17 +37,18 @@ export default function RightImage() {
               "isolate block mix-blend-color-burn"
             )}
           >
-            Financial infrastructure to grow your revenue
+            Launch Mutual Funds Mobile & Web Apps
           </span>
 
           <p className="text-base md:text-lg">
-            Join the millions of companies that use Stripe to accept payments
-            online and in person, embed financial services, power custom revenue
-            models, and build a more profitable business.
+            The best mutual funds UI infrastructure to build and launch Mutual
+            Funds Mobile & Web Apps. Be it anyone IFAs, Fintechs, Wealth
+            Management Companies to AMCs - MFStack helps you build MF Journeys
+            efficiently in matter of days.
           </p>
 
           <Button className="rounded-full">
-            Request an invite <ArrowRightIcon />
+            Get Started <ArrowRightIcon />
           </Button>
         </div>
 
