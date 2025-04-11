@@ -16,7 +16,7 @@ export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
       <>
-        <Icons.logo className="w-10 h-10" />
+        <img src="/logo.svg" alt="logo" className="w-12 h-12" />
         MFStack
       </>
     ),
