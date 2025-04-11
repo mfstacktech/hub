@@ -1,14 +1,18 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import { HomeLayout } from "fumadocs-ui/layouts/home";
 import { baseOptions, linkItems } from "@/app/layout.config";
 import { getLinks } from "fumadocs-ui/layouts/shared";
 import { Header } from "@/components/header";
 import { Icons } from "@/components/icons";
 import BigFooter from "@/components/big-footer";
+import StripeCanvas from "../stripe/(components)/canvas";
 
 export default function Layout({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   const footerNavigation = {
     solutions: [
       { name: "Marketing", href: "/marketing" },
@@ -54,14 +58,19 @@ export default function Layout({ children }: { children: ReactNode }) {
           <Header
             finalLinks={getLinks(linkItems, baseOptions.githubUrl)}
             {...baseOptions}
+            isHomePage={isHomePage}
           />
         ),
       }}
       className="pt-0 rjvim"
     >
-      <div className="flex flex-1 flex-col divide-y divide-dashed divide-border/70 border-border/70 border-dashed sm:border-b dark:divide-border dark:border-border">
-        {children}
-      </div>
+      {isHomePage ? (
+        children
+      ) : (
+        <div className="flex flex-1 flex-col divide-y divide-dashed divide-border/70 border-border/70 border-dashed sm:border-b dark:divide-border dark:border-border">
+          {children}
+        </div>
+      )}
 
       <BigFooter
         solutions={footerNavigation.solutions}

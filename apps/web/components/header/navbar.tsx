@@ -10,7 +10,9 @@ import {
 import { type HTMLAttributes, useState } from "react";
 import { GridBackground } from "@repo/ui/components/grid-background";
 
-export const Navbar = (props: HTMLAttributes<HTMLElement>) => {
+export const Navbar = (
+  props: HTMLAttributes<HTMLElement> & { isHomePage: boolean }
+) => {
   const [value, setValue] = useState("");
 
   return (
@@ -30,9 +32,12 @@ export const Navbar = (props: HTMLAttributes<HTMLElement>) => {
             "relative container mx-auto flex size-full h-14 flex-row items-center"
           )}
         >
-          <GridBackground maxWidthClass="container" />
+          {!props.isHomePage && <GridBackground maxWidthClass="container" />}
           <div
-            className="absolute top-0 left-0 h-14 w-14 -z-10"
+            className={cn(
+              "absolute top-0 left-0 h-14 w-14 -z-10",
+              props.isHomePage ? "hidden" : ""
+            )}
             style={{
               backgroundColor: "#f5f5f5",
               opacity: 0.2,
