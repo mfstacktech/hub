@@ -3,6 +3,7 @@ import Image from "next/image";
 import { GridBackground } from "@repo/ui/components/grid-background";
 import { cn } from "@/lib/utils";
 import { Button } from "@repo/shadcn/components/button";
+import { FloatingPaths } from "@repo/shadcn/components/kokonutui/background-paths";
 
 export default function RightImage() {
   return (
@@ -25,6 +26,9 @@ export default function RightImage() {
 
       <GridBackground maxWidthClass="container" />
 
+      <FloatingPaths position={-1} color="text-blue-300 dark:text-blue-500" />
+      <FloatingPaths position={-2} color="text-cyan-300 dark:text-cyan-500" />
+
       <div className="relative isolate mx-auto container px-4 sm:px-6 lg:px-8 relative grid-cols-1 pb-24 pt-32 md:grid-cols-[max(50%,400px)_1fr] grid mx-auto">
         <div className="space-y-8 sm:px-4">
           <div className="flex h-6 w-fit items-center gap-2 whitespace-nowrap rounded-full bg-black/30 py-0.5 pl-3 pr-3 text-xs font-semibold text-white backdrop-blur">
@@ -33,7 +37,7 @@ export default function RightImage() {
 
           <span
             className={cn(
-              "text-[min(88px,7vmax)] font-bold leading-[1.1] tracking-tighter text-gray-800",
+              "text-[min(88px,7vmax)] font-bold leading-[1.1] tracking-tighter text-gray-800 dark:text-gray-200",
               "isolate block mix-blend-color-burn"
             )}
           >
@@ -55,11 +59,22 @@ export default function RightImage() {
         <div className="absolute bottom-60 left-56 col-start-2 h-[580px] w-[920px] overflow-hidden rounded-4xl shadow-2xl">
           <div className="ml-0 mt-0 size-full rounded-tl-2xl">
             <Image
-              src={"/mfstack/hero-image.png"}
+              src={"/mfstack/dit-dashboard-light.png"}
               alt="phone"
               width={920}
               height={536}
-              className="relative object-contain rounded-2xl"
+              className="relative object-contain rounded-2xl hidden [html.light_&]:block"
+              style={{
+                filter: "drop-shadow(0 6px 24px rgba(0,0,0,0.4))",
+              }}
+            />
+
+            <Image
+              src={"/mfstack/dit-dashboard-dark.png"}
+              alt="phone"
+              width={920}
+              height={536}
+              className="relative object-contain rounded-2xl hidden [html.dark_&]:block"
               style={{
                 filter: "drop-shadow(0 6px 24px rgba(0,0,0,0.4))",
               }}
@@ -68,7 +83,7 @@ export default function RightImage() {
         </div>
         <div className="relative hidden h-full items-center justify-center md:flex">
           <figure
-            className="rounded-2xl relative w-[270px] h-[536px] bg-white m-0"
+            className="rounded-2xl relative w-[270px] h-[536px] bg-white dark:bg-black m-0"
             aria-hidden="true"
             style={{
               boxShadow:

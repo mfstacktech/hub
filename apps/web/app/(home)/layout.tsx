@@ -12,7 +12,7 @@ import StripeCanvas from "../stripe/(components)/canvas";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
+  const isHomePage = false; // pathname === "/";
   const footerNavigation = {
     solutions: [
       { name: "Marketing", href: "/marketing" },
