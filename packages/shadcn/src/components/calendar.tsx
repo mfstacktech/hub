@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { DayPicker } from "react-day-picker"
+import * as React from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { DayPicker } from "react-day-picker";
 
-import { cn } from "@foundations/shadcn/lib/utils"
-import { buttonVariants } from "@foundations/shadcn/components/button"
+import { cn } from "@repo/shadcn/lib/utils";
+import { buttonVariants } from "@repo/shadcn/components/button";
 
 function Calendar({
   className,
@@ -69,7 +69,7 @@ function Calendar({
       }}
       {...props}
     />
-  )
+  );
 }
 
-export { Calendar }
+export { Calendar };

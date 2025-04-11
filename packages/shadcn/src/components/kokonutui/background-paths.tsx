@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { cn } from "@foundations/shadcn/lib/utils";
+import { cn } from "@repo/shadcn/lib/utils";
 
 export function FloatingPaths({
   position,
