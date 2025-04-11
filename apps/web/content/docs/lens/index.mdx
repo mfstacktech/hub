@@ -1,0 +1,76 @@
+---
+title: Getting Started
+description: Data visualisation Library.
+index: true
+---
+
+### Introduction
+
+Welcome to the Locospec/Lens documentation!
+
+### What is @locospec/lens-react?
+
+`@locospec/lens-react` is a headless and styled data visualization framework for React, designed to help developers build powerful data exploration interfaces with ease. It provides a consistent and extensible structure for rendering, filtering, viewing, and interacting with datasets — all customizable and built to fit into any design system.
+
+Think of it as a lens that lets users focus on the exact slice of data they need — whether that’s through a datatable, a raw data view, filters, or custom-built views.
+
+---
+
+### Use Cases & Philosophy
+
+The core philosophy behind lens-react is modularity and clarity in data presentation. It aims to simplify the development of data-heavy UIs by offering:
+
+- **Composable components** for filtering, searching, and rendering data
+- **Configurable views** like tables, cards, and raw data modes
+- **Customizable filtering logic**, from simple toggles to full-blown filter builders
+- **Themable and pluggable architecture** to work seamlessly in any design system
+- Typical use-cases include:
+  - Admin panels & dashboards
+  - Internal tools
+  - Data review & auditing tools
+  - CMS-like interfaces
+
+---
+
+### Compatibility
+
+- **React**: `18.x` and above
+- **Bundlers**: Compatible with Vite, Webpack, Next.js, etc.
+- **Browser Support**: Modern evergreen browsers (Chrome, Firefox, Safari, Edge)
+- **Styling**: Tailwind CSS (default theme), but customizable via tokens or class overrides
+
+---
+
+### Quick Preview
+
+```tsx
+import { LensProvider, DataTable } from "@locospec/lens-react";
+
+function App() {
+  return (
+    <LensProvider lensConfiguration={lensConfiguration}>
+      <View viewConfiguration={viewConfiguration}>
+        <DataTable
+          selectedItems={checkedIds}
+          onSelect={handleSelectionChange}
+          variant="vanilla"
+        />
+      </View>
+    </LensProvider>
+  );
+}
+```
+
+> You can start with just a `LensProvider` and `DataTable` to see your data come to life.
+
+(Screenshots or interactive demos can be embedded here in the actual docs site)
+
+---
+
+### 🚦 Project Status
+
+**Status**: `Beta`
+
+- Actively maintained
+- API may undergo minor breaking changes before stable release
+- Ideal for early adopters, internal tools, and feedback loops

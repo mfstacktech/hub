@@ -1,0 +1,90 @@
+---
+title: View
+description: View configuration.
+index: true
+---
+
+# 👁️ View
+
+The `View` component is a context provider used inside the `LensProvider` to manage **view-specific configuration**, state, and layout behavior.
+
+It acts as a boundary for each *lens view* and is responsible for handling state like filters, search queries, modals/sheets, and view identifiers. All components like `Datatable`, `SimpleFilters`, and custom Lens-compatible widgets rely on the `View` context to function properly.
+
+---
+
+## 📦 Import
+
+```tsx
+import { View } from "@locospec/lens-react";
+```
+
+---
+
+## 🧠 Why `View` is Needed
+
+`View` provides:
+
+- A **scoped context** for a single lens configuration, especially useful when rendering multiple views in the same app.
+- Access to **view-level configuration** fetched by `LensProvider` (based on a `viewId`).
+- State for filters, search query, and sheet/modal visibility.
+- A reference to the container (`ref`) for sheet positioning and dynamic layout changes.
+- An ID (`view_uuid`) to uniquely track view instance, useful for analytics or debugging.
+
+---
+
+## 🧩 Props
+
+| Prop              | Type                     | Description |
+|-------------------|--------------------------|-------------|
+| `viewId`          | `string` (default: `"default"`) | The key to access the correct config object from the global Lens config. |
+| `children`        | `React.ReactNode`        | Components to render inside the view. |
+| `viewConfiguration` | `Record<string, any>` | Additional view-level context, if needed (e.g., dynamic tokens, UI options). |
+| `showSheetProp`   | `boolean`                | Controls visibility of the Lens Sheet (sidebar modal). |
+| `setShowSheetProp`| `(val: boolean) => void` | Optional external control to manage the Sheet toggle. |
+
+---
+
+## 🧪 Example
+
+```tsx
+<View viewId="orders-view">
+  <SimpleFilters />
+  <SearchInput />
+  <Datatable />
+</View>
+```
+
+This will:
+
+- Load config from the `orders-view` key inside the global Lens config.
+- Provide filter and search state to all child components.
+- Automatically render a sheet modal (`LensSidebar`) controlled by internal or external state.
+
+---
+
+## 🔄 Internally Provides (via ViewContext)
+
+You can access the following via `useContext(ViewContext)`:
+
+| Key              | Description |
+|------------------|-------------|
+| `filters`        | Current filter object (used in API calls). |
+| `searchQuery`    | Current search string. |
+| `setFilters`     | Method to update filters. |
+| `search`         | Method to update search query. |
+| `viewId`         | The unique ID of this view. |
+| `view_uuid`      | A random ID used internally for uniqueness. |
+| `viewChildRef`   | A ref to the main container div. |
+| `config`         | The Lens config for this view. |
+| `showSheet`      | Whether the Lens Sheet is open. |
+| `setShowSheet`   | Method to toggle the sheet modal. |
+| `context`        | Any extra user-passed context (like filters, user IDs, etc). |
+
+---
+
+## ⚠️ Note
+
+- The `View` **must be used inside** a `LensProvider`, otherwise it will throw an error.
+- The `viewId` should match a key inside the config returned by the Lens API or `configCallback`.
+
+---

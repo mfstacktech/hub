@@ -1,0 +1,79 @@
+---
+title: Style
+description: Introduction to Lens Datatable Styling.
+index: true
+---
+
+# Styling the Datatable
+
+The `Datatable` component offers flexibility in visual customization through the `classNames` prop. This prop allows you to apply custom classes (e.g., TailwindCSS or your own styles) to specific parts of the table structure—headers, rows, cells, and more—without needing to override internal logic or markup.
+
+This makes it easy to integrate the table into your design system or match your application's theme.
+
+---
+
+## How Styling Works
+
+You can pass a `classNames` object to the `Datatable` component, where each key corresponds to a specific part of the table. The values should be strings containing one or more CSS class names.
+
+```tsx
+<Datatable
+  classNames={{
+    wrapper: "border rounded-md",
+    headers: "bg-muted text-sm font-medium",
+    header: "p-3 uppercase tracking-wide",
+    body: "divide-y",
+    row: "hover:bg-accent",
+    cell: "p-3 text-sm",
+    actionsCell: "flex gap-2 justify-end",
+    actionsHeader: "text-right px-4",
+    resizehandle: "w-1 bg-gray-200 hover:bg-gray-400 cursor-col-resize"
+  }}
+/>
+```
+
+---
+
+## Available Styling Keys
+
+| Key             | Target Element                          | Description                                                                 |
+|------------------|------------------------------------------|-----------------------------------------------------------------------------|
+| `wrapper`       | Entire table container (`<div>`)        | Wraps the full datatable; useful for setting overall borders, shadows, etc. |
+| `headers`       | Header row container (`<thead>`)        | Applies to the whole row of headers.                                        |
+| `header`        | Individual header cell (`<th>`)         | Customizes each column heading.                                             |
+| `body`          | Table body wrapper (`<tbody>`)          | Styles the scrollable or body area of the table.                            |
+| `row`           | Each table row (`<tr>`)                 | Use for row hover states, padding, background colors, etc.                  |
+| `cell`          | Each standard table cell (`<td>`)       | Applies to every non-action cell in the table body.                         |
+| `actionsCell`   | Action column cell (`<td>`)             | Used for styling cells containing row-level actions like buttons or icons.  |
+| `actionsHeader` | Header for action column (`<th>`)       | Applies to the column header above the actions column.                      |
+| `resizehandle`  | Column resizer element                  | Controls the draggable element used for resizing columns.                   |
+
+---
+
+## Example Use Case
+
+Here's a practical example using TailwindCSS for a minimal and clean table design:
+
+```tsx
+<Datatable
+  classNames={{
+    wrapper: "rounded-lg border border-gray-200",
+    headers: "bg-gray-50",
+    header: "px-4 py-2 text-gray-700 font-semibold text-xs uppercase",
+    body: "bg-white",
+    row: "hover:bg-gray-100",
+    cell: "px-4 py-2 text-sm text-gray-800",
+    actionsCell: "px-4 py-2 flex gap-2 justify-end",
+    actionsHeader: "px-4 py-2 text-right text-xs font-bold",
+    resizehandle: "w-1 bg-blue-200 hover:bg-blue-400 cursor-col-resize"
+  }}
+/>
+```
+
+---
+
+## Notes
+
+- All keys are optional—you can supply only the ones you wish to customize.
+- This design is compatible with utility-first CSS libraries like TailwindCSS, but you can also use regular CSS class names.
+- If you require deeper customization, consider overriding the component or wrapping it with your own logic.

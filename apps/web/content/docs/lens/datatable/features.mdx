@@ -1,0 +1,52 @@
+---
+title: Features
+description: Introduction to Datatable Features.
+index: true
+---
+
+# 📊 Datatable Features
+
+The `Datatable` component comes with several built-in features that improve usability and interactivity out of the box. These features are designed to offer control over column layout, handle large datasets efficiently, and improve the overall table experience.
+
+---
+
+## 🔀 Column Ordering
+
+Users can reorder columns by dragging the column headers. This feature allows for a customizable view of the data, letting users prioritize columns based on their needs.
+
+Column reordering is **automatically enabled** and works seamlessly when columns are defined via the Lens config.
+
+- The updated column order is preserved internally in state.
+- It can optionally be synced with a `viewId` if you're using saved views.
+
+---
+
+## ↔️ Column Resizing
+
+Each column in the table can be resized by dragging the resize handle at the edge of the column header. This enables users to adjust column widths based on content size or personal preference.
+
+- Resizing is enabled by default but can be disabled using the `disableResizing` prop:
+  
+  ```tsx
+  <Datatable disableResizing />
+  ```
+
+- The resize handle styling can be customized using the `classNames.resizehandle` prop.
+
+---
+
+## 📄 Cursor Pagination
+
+The datatable supports **cursor-based pagination**, which is efficient for handling large datasets. Rather than using traditional offset-based pagination, cursor pagination allows seamless navigation through rows without the performance issues that come with deep page numbers.
+
+Pagination is handled internally when the Lens config includes pagination metadata.
+
+- The table will show a navigation footer when pagination is available.
+- Cursor values are managed automatically, and the component fetches the next set of data when users paginate forward or backward.
+
+---
+
+## ✅ Additional Notes
+
+- These features are enabled by default and require no additional setup when using the Datatable with Lens configuration.
+- Advanced configuration (e.g., saving layout state or integrating with back-end view storage) can be added via props like `viewId`.

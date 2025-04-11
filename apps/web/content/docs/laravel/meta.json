@@ -1,0 +1,6 @@
+{
+  "title": "Laravel",
+  "description": "Backend Integration for Laravel",
+  "pages": ["---Introduction---", "button", "accordion", "tabs"],
+  "root": true
+}

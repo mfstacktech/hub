@@ -1,0 +1,114 @@
+---
+title: Installation
+description: Setup Lens React.
+index: true
+---
+
+# 🖥 System Requirements
+
+Before installing `@locospec/lens-react`, ensure your development environment meets the minimum requirements. The package is built for modern React applications and depends on Tailwind CSS for styling.
+
+- [Node.js 18.18](https://nodejs.org/en/docs) or later
+- [Tailwind CSS version 3](https://tailwindcss.com/docs/installation) or higher 
+- [React 16.8](https://react.dev/) or higher
+
+---
+
+# 📦 Step 1: Install the Package
+
+To get started, install the Lens React package using your preferred package manager:
+
+```bash
+npm install @locospec/lens-react
+```
+
+> If Tailwind CSS isn't set up in your project yet, [follow the installation guide](https://tailwindcss.com/docs/installation). The components in this library are styled using Tailwind utility classes, so it's required for proper rendering.
+
+---
+
+# 🧩 Step 2: Import Core Components
+
+Once installed, import the components you need from `@locospec/lens-react`:
+
+```tsx
+import {
+  LensProvider,
+  View,
+  Datatable,
+  SimpleFilters,
+  useDebouncedSearch,
+} from "@locospec/lens-react";
+```
+
+Here’s a quick overview of what each component does:
+
+- [`LensProvider`](/docs/lens/lensprovider) – Initializes the Lens context and provides configuration.  
+- [`View`](/docs/lens/view) – Scopes filters, search, and table to a specific dataset.  
+- [`Datatable`](/docs/lens/datatable) – Renders the tabular data.  
+- [`SimpleFilters`](/docs/lens/simple-filters) – (Optional) A plug-and-play component for basic filtering.  
+
+> These components are composable, letting you build flexible data UIs with minimal setup.
+
+---
+
+# ⚙️ Step 3: Configure Lens
+
+To connect your UI with backend data, define a configuration object and pass it to [`LensProvider`](/docs/lens/lensprovider). This configuration controls how Lens fetches view metadata and data records.
+
+At a minimum, your configuration should include:
+
+- `endpoint`: Base URL used to fetch config, data and relation options.  
+- `permissionHeaders`: optional headers (e.g., for auth or CSRF)
+
+```ts
+const lensConfig = {
+  endpoint: "/api/data-bench/auction-data-3",
+  permissionHeaders: {
+    'X-CSRF-TOKEN': tokenElement?.getAttribute('content') || '',
+  },
+};
+```
+
+You can override the default behavior by supplying custom fetchers:
+
+- `configCallback`: used instead of `endpoint` to load view configuration  
+- `dataCallback`: used to manually fetch paginated data, filters, and search results
+
+```ts
+const lensConfig = {
+  endpoint: "/api/table-data/my-table",
+  configCallback: () => config, // returns view config
+  dataCallback: (requestPayload) => fetchData(requestPayload), // returns paginated data
+  permissionHeaders: { ... },
+};
+```
+
+> This approach gives you full control over how data and config are loaded — useful for SSR, mocking, or dynamic APIs.
+
+---
+
+# 🛠 Step 4: Render Your Data UI
+
+Once your configuration is ready, wrap your layout in [`LensProvider`](/docs/lens/lensprovider) and nest a [`View`](/docs/lens/view) inside it. Inside the `View`, you can plug in components like [`Datatable`](/docs/lens/datatable), [`SimpleFilters`](/docs/lens/simple-filters), and a search input.
+
+Here’s a basic example:
+
+```tsx
+<LensProvider lensConfiguration={lensConfig}>
+  <View>
+    <div className="p-4 space-y-4">
+      <div className="flex justify-between items-center gap-2">
+        <CustomSearchInput />
+        <SimpleFilters />
+      </div>
+
+      <Datatable />
+    </div>
+  </View>
+</LensProvider>
+```
+
+This setup will:
+
+- Load the view configuration and data from the endpoint or callbacks
+- Automatically wire filters, search, and pagination into the [`Datatable`](/docs/lens/datatable)

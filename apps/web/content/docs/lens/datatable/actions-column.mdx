@@ -1,0 +1,104 @@
+---
+title: Actions Column
+description: Introduction to Lens Datatable Actions Column.
+index: true
+---
+
+# 📎 Actions Column
+
+The **Actions Column** in the `Datatable` component is a special, reserved column used to display **interactive actions (CTAs)** for each row. It is typically defined in the backend lens config and rendered as a distinct column labeled `"Actions"` or similar.
+
+This column makes it easy to perform context-aware operations — such as edit, view, or delete — directly from the table interface.
+
+---
+
+## 🔧 Configuration Source
+
+The actions column is not configured manually in the frontend. Instead, it is derived from:
+
+- Backend lens configuration, or
+- A dynamic `configCallback` function
+
+Each row uses the backend-supplied configuration to render the relevant set of actions.
+
+---
+
+## 🎛️ Frontend Customization with `actionsMapping`
+
+While the structure and visibility of the actions column is controlled by the backend, the frontend can **customize** or **enhance** each action’s behavior or appearance via the `actionsMapping` prop.
+
+This prop allows you to:
+
+- Override the `icon`, `url`, or `label`
+- Add `confirmation` prompts
+- Provide a custom `callback` instead of navigation
+- Replace rendering with a custom `component`
+- Apply custom styles
+
+> 🔁 **Precedence Rule:** Values from the backend configuration take precedence over anything passed via `actionsMapping`.
+
+---
+
+### ✅ Example: Customizing Actions
+
+```tsx
+<Datatable
+  actionsMapping={{
+    view: {
+      icon: EyeIcon,
+      url: "/view/:id",
+    },
+    delete: {
+      icon: Trash2,
+      confirmation: true,
+      callback: ({ url, data }) => {
+        console.log("Deleted:", data);
+      },
+    },
+    custom: {
+      icon: Clock,
+      label: "Schedule",
+      url: "/schedule/:id",
+      callback: ({ url }) => {
+        // Optional side effect
+      },
+    },
+  }}
+/>
+```
+
+In this example:
+
+- The `view` action uses a custom icon and route.
+- The `delete` action includes a confirmation step and a callback function.
+- A new action (`custom`) is enhanced with both a label and icon.
+
+---
+
+## 🧵 Nested Actions
+
+Action items can include an `options` array for rendering nested dropdown actions. These are configured via the backend but can inherit behavior or styling from the mapping.
+
+---
+
+## 🪄 Dynamic URLs
+
+Both backend configs and `actionsMapping` can use `:placeholders` in URLs, which are automatically interpolated using row data:
+
+```
+/edit/:id
+/view/:city.locality.id
+```
+
+---
+
+## ✅ Summary
+
+| Feature                | Source              | Notes                                                                 |
+|------------------------|---------------------|-----------------------------------------------------------------------|
+| Column visibility      | Lens config          | Must be defined by backend                                            |
+| Action label/icon/url  | Lens config / Mapping | Config takes priority; mapping can override or fill missing fields    |
+| Custom behavior        | Mapping              | Add callbacks, confirmations, custom components, or styling           |
+| URL placeholders       | Config / Mapping     | Interpolated from row data using dot notation                         |
+| Nested actions         | Config               | Provided as `options` array                                           |
+| Confirmation support   | Config / Mapping     | Boolean flag triggers built-in prompt                                 |

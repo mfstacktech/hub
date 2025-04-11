@@ -1,0 +1,157 @@
+---
+title: Props
+description: Introduction to Lens Data table Props.
+index: true
+---
+
+# Props
+
+The `Datatable` component accepts a variety of props to configure its behavior, styling, and interaction with backend view configuration. These props are passed down to the internal `DataTableLensContextProvider`, which initializes the entire context system powering the table.
+
+---
+
+## Prop Reference
+
+### `onSelect`
+
+```ts
+onSelect?: (selected: any[]) => void;
+```
+
+- **Type**: `Function`
+- **Default**: `() => {}`
+- **Description**: Callback triggered whenever row selection changes. It receives an array of selected row identifiers.
+
+**Example:**
+```tsx
+<Datatable onSelect={(rows) => console.log("Selected:", rows)} />
+```
+
+---
+
+### `selectedItems`
+
+```ts
+selectedItems?: string[];
+```
+
+- **Type**: `string[]`
+- **Default**: `[]`
+- **Description**: Preselect rows in the table using their identifier keys.
+
+**Example:**
+```tsx
+<Datatable selectedItems={["user_123", "user_456"]} />
+```
+
+---
+
+### `classNames`
+
+```ts
+classNames?: TableStylingInterface;
+```
+
+- **Type**: `object`
+- **Description**: Customize the styling of different parts of the table such as headers, rows, cells, etc.
+
+**Example:**
+```tsx
+<Datatable
+  classNames={{
+    wrapper: "rounded-lg shadow border",
+    headers: "bg-gray-100 text-sm font-semibold",
+    body: "bg-muted",
+  }}
+/>
+```
+
+---
+
+### `disableResizing`
+
+```ts
+disableResizing?: boolean;
+```
+
+- **Type**: `boolean`
+- **Default**: `false`
+- **Description**: Disables column resizing functionality when set to `true`.
+
+**Example:**
+```tsx
+<Datatable disableResizing />
+```
+
+---
+
+### `viewId`
+
+```ts
+viewId?: string;
+```
+
+- **Type**: `string`
+- **Description**: Identifies which Lens view configuration to use for rendering the table. Useful when multiple views exist on the same entity.
+
+**Example:**
+```tsx
+<Datatable viewId="admin_users_table" />
+```
+
+---
+
+### `rowActions`
+
+```ts
+rowActions?: Record<string, React.ComponentType | Function>;
+```
+
+- **Type**: `object`
+- **Description**: Map of actions to render in specific cells. Keys should match column IDs defined in the backend config. Used for things like edit buttons, links, or custom renderers.
+
+**Example:**
+```tsx
+<Datatable
+  rowActions={{
+    status: ({ row }) => <Badge variant="outline">{row.status}</Badge>,
+    actions: ({ row }) => <EditButton id={row.id} />,
+  }}
+/>
+```
+
+---
+
+### `actionsMapping`
+
+```ts
+actionsMapping?: ActionsMappingPropInterface;
+```
+
+- **Type**: `object`
+- **Description**: Optional map to override or transform default cell actions. Allows injection of scoped logic or button renderers based on view permissions or external logic.
+
+**Example:**
+```tsx
+<Datatable
+  actionsMapping={{
+    delete: (row) => <DeleteButton id={row.id} />,
+    custom: (row) => row.isActive && <Tag variant="green">Active</Tag>,
+  }}
+/>
+```
+
+---
+
+## Summary Table
+
+| Prop            | Type                      | Default       | Description                                                   |
+|------------------|-----------------------------|----------------|---------------------------------------------------------------|
+| `onSelect`       | `(selected: any[]) => void` | `() => {}`     | Callback when rows are selected                               |
+| `selectedItems`  | `string[]`                 | `[]`           | Preselected row keys                                          |
+| `classNames`     | `TableStylingInterface`     | `undefined`    | Custom styling for table UI                                   |
+| `disableResizing`| `boolean`                  | `false`        | Disable column resizing                                       |
+| `disableReordering`| `boolean`                  | `false`        | Disable column Ordering feature                                       |
+| `viewId`         | `string`                   | `undefined`    | View ID from Lens to load config                              |
+| `rowActions`     | `Record<string, Function>` | `undefined`    | Custom renderers for specific columns                         |
+| `actionsMapping` | `ActionsMappingPropInterface` | `undefined` | Scoped action renderers for specific row context              |
