@@ -1,3 +1,5 @@
+"use client";
+import "@/app/formkit.css";
 import React, { useEffect } from "react";
 
 const ConvertKitForm = () => {

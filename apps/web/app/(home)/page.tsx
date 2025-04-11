@@ -7,6 +7,7 @@ import HowWeSolve from "@/components/landing/how-we-solve";
 import Features from "@/components/landing/features";
 import WhyUs from "@/components/landing/why-us";
 import Faqs from "@/components/landing/faqs";
+import ConvertKitForm from "@/components/landing/mfstack/ConvertKitForm";
 
 export default function HomePage() {
   return (
@@ -19,7 +20,11 @@ export default function HomePage() {
             <Hero />
           </div>
         </div>
+
         <div className="relative flex flex-col items-center justify-center w-full mx-auto container space-y-8">
+          <div className="w-full bg-gradient-to-tr from-indigo-50 to-indigo-100 dark:from-indigo-800 dark:to-indigo-700 my-12 p-4 lg:p-12 flex flex-row justify-center shadow-sm rounded-lg">
+            <ConvertKitForm />
+          </div>
           <WhomHow />
           <HowWeSolve />
           <Features />
