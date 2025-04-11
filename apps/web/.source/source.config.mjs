@@ -2,28 +2,13 @@
 import {
   defineCollections,
   defineConfig,
-  defineDocs,
-  frontmatterSchema,
-  metaSchema
+  frontmatterSchema
 } from "fumadocs-mdx/config";
 import { z } from "zod";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import { transformerRemoveNotationEscape } from "@shikijs/transformers";
 import { rehypeCodeDefaultOptions } from "fumadocs-core/mdx-plugins";
-var docs = defineDocs({
-  docs: {
-    schema: frontmatterSchema.extend({
-      index: z.boolean().default(false)
-    })
-  },
-  meta: {
-    schema: metaSchema.extend({
-      description: z.string().optional()
-    })
-  },
-  dir: "content/docs"
-});
 var blog = defineCollections({
   type: "doc",
   dir: "content/blog",
@@ -68,6 +53,5 @@ var source_config_default = defineConfig({
 });
 export {
   blog,
-  source_config_default as default,
-  docs
+  source_config_default as default
 };

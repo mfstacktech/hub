@@ -13,19 +13,19 @@ import remarkMath from "remark-math";
 import { transformerRemoveNotationEscape } from "@shikijs/transformers";
 import { rehypeCodeDefaultOptions } from "fumadocs-core/mdx-plugins";
 
-export const docs = defineDocs({
-  docs: {
-    schema: frontmatterSchema.extend({
-      index: z.boolean().default(false),
-    }),
-  },
-  meta: {
-    schema: metaSchema.extend({
-      description: z.string().optional(),
-    }),
-  },
-  dir: "content/docs",
-});
+// export const docs = defineDocs({
+//   docs: {
+//     schema: frontmatterSchema.extend({
+//       index: z.boolean().default(false),
+//     }),
+//   },
+//   meta: {
+//     schema: metaSchema.extend({
+//       description: z.string().optional(),
+//     }),
+//   },
+//   dir: "content/docs",
+// });
 
 export const blog = defineCollections({
   type: "doc",
