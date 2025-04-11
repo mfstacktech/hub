@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { BookIcon, MoveRight, PhoneCall } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@repo/shadcn/components/button";
 import { Icons } from "./icons";
 import { DocumentPlusIcon } from "@heroicons/react/16/solid";
 
