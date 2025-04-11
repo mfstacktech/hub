@@ -1,12 +1,10 @@
 import type { TableOfContents } from "fumadocs-core/server";
 import type { ReactNode } from "react";
 import { DocsLayout } from "fumadocs-ui/layouts/docs";
-import { DocsBody, DocsPage, DocsTitle } from "fumadocs-ui/page";
+import { DocsPage } from "fumadocs-ui/page";
 import { cn } from "@/lib/utils";
 import { Section } from "./section";
-import { InlineTOC } from "fumadocs-ui/components/inline-toc";
-import { GridBackground } from "./grid-background";
-
+import { GridBackground } from "@repo/ui/components/grid-background";
 interface MdxLayoutProps {
   children: ReactNode;
   title: string;

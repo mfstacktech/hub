@@ -1,4 +1,4 @@
-import { GridBackground } from "@/components/grid-background";
+import { GridBackground } from "@repo/ui/components/grid-background";
 import Hero from "@/components/hero";
 import Link from "next/link";
 import { RecentPosts } from "./blog/[[...slug]]/(components)/blog-list";

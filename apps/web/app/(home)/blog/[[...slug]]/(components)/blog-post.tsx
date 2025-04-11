@@ -10,7 +10,7 @@ import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import { Calendar } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { GridBackground } from "@/components/grid-background";
+import { GridBackground } from "@repo/ui/components/grid-background";
 import { getCategoryBySlug } from "@/lib/categories";
 
 interface BlogPostProps {

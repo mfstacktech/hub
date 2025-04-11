@@ -1,7 +1,7 @@
 "use client";
 
 import { baseOptions } from "@/app/layout.config";
-import { GridBackground } from "./grid-background";
+import { GridBackground } from "@repo/ui/components/grid-background";
 import { Icons } from "./icons";
 import { cn } from "@/lib/utils";
 import React from "react";

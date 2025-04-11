@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { PlusIcon } from "lucide-react";
 import type { HTMLAttributes } from "react";
-import { GridBackground } from "./grid-background";
+import { GridBackground } from "@repo/ui/components/grid-background";
 
 type SectionProps = {
   sectionClassName?: string;

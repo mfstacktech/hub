@@ -2,7 +2,7 @@ import Link from "next/link";
 import { BlogPost } from "@/lib/source";
 import { Card } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
-import { GridBackground } from "@/components/grid-background";
+import { GridBackground } from "@repo/ui/components/grid-background";
 import { Pagination } from "./pagination";
 import { DocsTitle, DocsDescription } from "fumadocs-ui/page";
 // import { Pagination } from "./pagination";

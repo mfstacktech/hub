@@ -8,7 +8,7 @@ import {
   NavigationMenuViewport,
 } from "fumadocs-ui/components/ui/navigation-menu";
 import { type HTMLAttributes, useState } from "react";
-import { GridBackground } from "../grid-background";
+import { GridBackground } from "@repo/ui/components/grid-background";
 
 export const Navbar = (props: HTMLAttributes<HTMLElement>) => {
   const [value, setValue] = useState("");

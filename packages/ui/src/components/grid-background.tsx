@@ -1,8 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@repo/shadcn/lib/utils";
 import { FC } from "react";
-import { useTheme } from "next-themes";
 
 interface GridBackgroundProps {
   columns?: number;
@@ -17,8 +16,6 @@ export const GridBackground: FC<GridBackgroundProps> = ({
   className = "",
   maxWidthClass = "container",
 }) => {
-  const { theme } = useTheme();
-
   // Create array based on column count
   const columnElements = Array.from({ length: columns }, (_, i) => (
     <div
