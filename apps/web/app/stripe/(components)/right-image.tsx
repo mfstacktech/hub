@@ -33,7 +33,7 @@ export default function RightImage() {
 
           <span
             className={cn(
-              "text-[min(88px,7vmax)] font-bold leading-[1.1] tracking-tighter text-[#2F2E31]",
+              "text-[min(88px,7vmax)] font-bold leading-[1.1] tracking-tighter text-gray-800",
               "isolate block mix-blend-color-burn"
             )}
           >
@@ -52,20 +52,44 @@ export default function RightImage() {
           </Button>
         </div>
 
-        <div className="absolute bottom-48 left-56 col-start-2 h-[580px] w-[920px] overflow-hidden rounded-2xl bg-white/30 shadow-2xl">
-          <div className="ml-56 mt-16 size-full rounded-tl-lg bg-white" />
+        <div className="absolute bottom-60 left-56 col-start-2 h-[580px] w-[920px] overflow-hidden rounded-4xl shadow-2xl">
+          <div className="ml-0 mt-0 size-full rounded-tl-2xl">
+            <Image
+              src={"/mfstack/hero-image.png"}
+              alt="phone"
+              width={920}
+              height={536}
+              className="relative object-contain rounded-2xl"
+              style={{
+                filter: "drop-shadow(0 6px 24px rgba(0,0,0,0.4))",
+              }}
+            />
+          </div>
         </div>
         <div className="relative hidden h-full items-center justify-center md:flex">
-          <Image
-            src={"https://placehold.co/270x536"}
-            alt="phone"
-            width={270}
-            height={536}
-            className="relative object-contain"
+          <figure
+            className="rounded-2xl relative w-[270px] h-[536px] bg-white m-0"
+            aria-hidden="true"
             style={{
-              filter: "drop-shadow(0 6px 24px rgba(0,0,0,0.4))",
+              boxShadow:
+                "0 50px 100px -20px rgba(50, 50, 93, 0.25), 0 30px 60px -30px rgba(0, 0, 0, 0.3), inset 0 -2px 6px 0 rgba(10, 37, 64, 0.35)",
+              userSelect: "none",
+              WebkitUserSelect: "none",
+              MozUserSelect: "none",
             }}
-          />
+          >
+            {/* <div className="h-36 bg-indigo-500 rounded-t-2xl"></div> */}
+            <Image
+              src={"/mfstack/image.png"}
+              alt="phone"
+              width={270}
+              height={536}
+              className="relative object-contain rounded-2xl"
+              style={{
+                filter: "drop-shadow(0 6px 24px rgba(0,0,0,0.4))",
+              }}
+            />
+          </figure>
         </div>
       </div>
     </div>
