@@ -84,8 +84,11 @@ export function Banner() {
       <div className="flex items-center gap-3">
         <p className="text-sm text-gray-900">
           Built and actively maintained by{" "}
-          <Link href="https://teurons.com" className="font-semibold underline">
-            Teurons
+          <Link
+            href="https://betalectic.com"
+            className="font-semibold underline"
+          >
+            Betalectic
           </Link>
         </p>
       </div>
