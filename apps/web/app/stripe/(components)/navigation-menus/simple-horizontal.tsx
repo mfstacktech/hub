@@ -21,7 +21,7 @@ interface SimpleNavigationMenuProps {
   className?: string;
 }
 
-export function HorizontalNavigationMenu({
+export function SimpleNavigationMenu({
   items,
   className = "",
 }: SimpleNavigationMenuProps) {
