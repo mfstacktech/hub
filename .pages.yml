@@ -14,3 +14,6 @@ content:
       - name: title
         label: Title
         type: string
+      - name: body
+        label: Body
+        type: rich-text
