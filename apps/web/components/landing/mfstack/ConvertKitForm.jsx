@@ -46,7 +46,7 @@ const ConvertKitForm = () => {
               fontWeight: 700,
             }}
           >
-            <h2 className="text-balance text-4xl sm:text-5xl lg:text-7xl font-semibold tracking-tight">
+            <h2 className="text-balance text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight">
               Be among the first to experience MF Stack - join the waitlist
               today!
             </h2>
@@ -66,7 +66,7 @@ const ConvertKitForm = () => {
           <div
             data-element="fields"
             data-stacked="false"
-            className="seva-fields formkit-fields max-w-xl mx-auto"
+            className="seva-fields formkit-fields w-full mx-auto"
           >
             <div className="formkit-field">
               <input

@@ -32,6 +32,12 @@ export const baseOptions: BaseLayoutProps = {
 export const linkItems: LinkItemType[] = [
   {
     icon: <Icons.info />,
+    text: "Pricing",
+    url: "/pricing",
+    active: "url",
+  },
+  {
+    icon: <Icons.info />,
     text: "Blog",
     url: "/blog",
     active: "url",
@@ -43,17 +49,23 @@ export const linkItems: LinkItemType[] = [
     active: "url",
   },
   {
-    icon: <Icons.posts />,
-    text: "Me",
-    url: "/me",
+    icon: <Icons.info />,
+    text: "Roadmap",
+    url: "/roadmap",
     active: "url",
   },
-  {
-    icon: <Icons.tags />,
-    text: "Tags",
-    url: "/tags",
-    active: "url",
-  },
+  // {
+  //   icon: <Icons.posts />,
+  //   text: "Me",
+  //   url: "/me",
+  //   active: "url",
+  // },
+  // {
+  //   icon: <Icons.tags />,
+  //   text: "Tags",
+  //   url: "/tags",
+  //   active: "url",
+  // },
 ];
 
 export const postsPerPage = 5;
