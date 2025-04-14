@@ -7,7 +7,7 @@ content:
     label: Blog
     path: apps/web/content/blog
     type: collection
-    filename: field.title.mdx
+    filename: {primary}.mdx
     view:
       fields: [ title, date ]
     fields:
