@@ -211,7 +211,7 @@ export default function BigFooter({
         </div>
         <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 flex flex-col md:flex-row gap-2 items-center justify-between">
           <p className="text-sm/6 text-gray-600">
-            &copy; 2025. All rights reserved.
+            &copy; 2025 MFStack. All rights reserved.
           </p>
           <Banner />
         </div>

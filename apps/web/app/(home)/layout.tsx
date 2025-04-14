@@ -9,6 +9,7 @@ import { Header } from "@/components/header";
 import { Icons } from "@/components/icons";
 import BigFooter from "@/components/big-footer";
 import StripeCanvas from "../stripe/(components)/canvas";
+import { SocialIcons } from "@repo/ui/components/social-icons";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -40,12 +41,22 @@ export default function Layout({ children }: { children: ReactNode }) {
       {
         name: "Twitter",
         href: "https://x.com/mfstacktech",
-        icon: Icons.x,
+        icon: SocialIcons.x,
       },
       {
         name: "GitHub",
         href: "https://github.com/mfstacktech",
-        icon: Icons.github,
+        icon: SocialIcons.github,
+      },
+      {
+        name: "LinkedIn",
+        href: "https://www.linkedin.com/company/mf-stack",
+        icon: SocialIcons.linkedIn,
+      },
+      {
+        name: "WhatsApp",
+        href: "https://chat.whatsapp.com/IpcCMMZoOk27hfnW6ybZTD",
+        icon: SocialIcons.whatsApp,
       },
     ],
   };
