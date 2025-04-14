@@ -179,30 +179,53 @@ const FaqItem = React.forwardRef<
 });
 FaqItem.displayName = "FaqItem";
 
-const DEMO_FAQS = [
+const faqQuestions = [
   {
-    question: "What makes your platform unique?",
-    answer:
-      "Our platform stands out through its intuitive design, powerful automation capabilities, and seamless integration options. We've focused on creating a user experience that combines simplicity with advanced features.",
+    question: "What Mutual fund Transaction Providers do you Support?",
+    answer: "Our Transaction production is powered by Fintech Primitive APIs.",
   },
   {
-    question: "How does the pricing structure work?",
+    question: "How can I go live in minutes to start MF distribution online?",
     answer:
-      "We offer flexible, transparent pricing tiers designed to scale with your needs. Each tier includes a core set of features, with additional capabilities as you move up. All plans start with a 14-day free trial.",
+      "Distribute Mutual Funds online in just 3 steps: Obtain your ARN and complete AMC empanelment; Get APIs from Fintech Primitives; Sign up with MF Stack to go live in minutes - start for free!",
   },
   {
-    question: "What kind of support do you offer?",
+    question: "What kind of transactions do you support?",
     answer:
-      "We provide comprehensive support through multiple channels. This includes 24/7 live chat, detailed documentation, video tutorials, and dedicated account managers for enterprise clients.",
+      "We support the following kinds of transactions: One time purchase, SIP, Switch, SWP, STP and Redemption",
   },
+  {
+    question: "What features do you support for SIP investments?",
+    answer:
+      "We support Pause, Cancel and Resume of SIP. Other than this we also support Step up and Step down SIPs",
+  },
+  {
+    question: "Do you build solutions for customized MF Product?",
+    answer:
+      "Yes, we can build a custom solution for your needs. You can setup a call with our team which will understand your requirements, and layout a plan for your custom application. We take care of the look and feel of your app and build you an enterprise grade application which can help you scale your business.",
+  },
+  // Commented FAQs preserved from original file
+  // {
+  //   question: "How to migrate my current investors to FP?",
+  //   answer: "",
+  // },
+  // {
+  //   question:
+  //     "If I migrate to FP, do I have to create new mandates for my investors?",
+  //   answer: "",
+  // },
+  // {
+  //   question: "How to migrate the existing folios to FP?",
+  //   answer: "",
+  // },
 ];
 
 function Faqs2() {
   return (
     <FaqSection
-      title="Frequently Asked Questions"
-      description="Everything you need to know about our platform"
-      items={DEMO_FAQS}
+      title="Frequently asked questions"
+      description="Everything you need to know about the product and billing."
+      items={faqQuestions}
       contactInfo={{
         title: "Still have questions?",
         description: "We're here to help you",
