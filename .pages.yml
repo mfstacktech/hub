@@ -16,4 +16,4 @@ content:
         type: string
       - name: body
         label: Body
-        type: rich-text
+        type: text
