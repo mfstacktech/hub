@@ -9,7 +9,7 @@ content:
     type: collection
     filename: field.title.mdx
     view:
-      fields: [ title ]
+      fields: [ title, date ]
     fields:
       - name: title
         label: Title
