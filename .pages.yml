@@ -1,4 +1,8 @@
 content:
+  - name: categories
+    label: Categories
+    path: apps/web/lib/categories.ts
+    type: file
   - name: posts
     label: Posts
     path: apps/web/content/blog
