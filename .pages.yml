@@ -3,5 +3,6 @@ content:
     label: Posts
     path: apps/web/content/blog
     type: collection
+    filename: field.title.mdx
     view:
       fields: [ title ]
