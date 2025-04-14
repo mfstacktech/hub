@@ -32,10 +32,23 @@ export default function Layout({ children }: { children: ReactNode }) {
       { name: "Careers", href: "/careers" },
       { name: "Contact", href: "/contact" },
     ],
-    legal: [
-      { name: "Privacy", href: "/privacy" },
-      { name: "Terms", href: "/terms" },
-      { name: "Cookie Policy", href: "/cookies" },
+    media: [
+      {
+        name: "Twitter",
+        href: "https://x.com/mfstacktech",
+      },
+      {
+        name: "GitHub",
+        href: "https://github.com/mfstacktech",
+      },
+      {
+        name: "LinkedIn",
+        href: "https://www.linkedin.com/company/mf-stack",
+      },
+      {
+        name: "WhatsApp",
+        href: "https://chat.whatsapp.com/IpcCMMZoOk27hfnW6ybZTD",
+      },
     ],
     social: [
       {
@@ -87,7 +100,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         solutions={footerNavigation.solutions}
         support={footerNavigation.support}
         company={footerNavigation.company}
-        legal={footerNavigation.legal}
+        media={footerNavigation.media}
         social={footerNavigation.social}
         companyName="mfstack"
         companyDescription="MFStack is an Ecosystem to scale Mutual Funds Distribution"

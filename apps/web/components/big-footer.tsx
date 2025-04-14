@@ -22,7 +22,7 @@ export type FooterNavigationProps = {
   solutions?: FooterNavigationItem[];
   support?: FooterNavigationItem[];
   company?: FooterNavigationItem[];
-  legal?: FooterNavigationItem[];
+  media?: FooterNavigationItem[];
   social?: FooterSocialItem[];
   companyName?: string;
   companyDescription?: string;
@@ -100,7 +100,7 @@ export default function BigFooter({
   solutions,
   support,
   company,
-  legal,
+  media,
   social,
   companyName,
   companyDescription,
@@ -109,7 +109,7 @@ export default function BigFooter({
     solutions,
     support,
     company,
-    legal,
+    media,
     social,
   };
 
@@ -192,9 +192,9 @@ export default function BigFooter({
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm/6 font-semibold text-gray-900">Legal</h3>
+                <h3 className="text-sm/6 font-semibold text-gray-900">Media</h3>
                 <ul role="list" className="mt-6 space-y-4">
-                  {navigation.legal?.map((item) => (
+                  {navigation.media?.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
