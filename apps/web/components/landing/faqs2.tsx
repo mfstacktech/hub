@@ -3,9 +3,10 @@
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Mail } from "lucide-react";
+import { Calendar, ChevronDown, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@repo/shadcn/components/button";
+import Link from "next/link";
 
 interface FaqSectionProps extends React.HTMLAttributes<HTMLElement> {
   title: string;
@@ -70,7 +71,7 @@ const FaqSection = React.forwardRef<HTMLElement, FaqSectionProps>(
               className="max-w-md mx-auto mt-12 p-6 rounded-lg text-center"
             >
               <div className="inline-flex items-center justify-center p-1.5 rounded-full mb-4">
-                <Mail className="h-4 w-4" />
+                <Calendar className="h-4 w-4" />
               </div>
               <p className="text-sm font-medium text-foreground mb-1">
                 {contactInfo.title}
@@ -78,8 +79,14 @@ const FaqSection = React.forwardRef<HTMLElement, FaqSectionProps>(
               <p className="text-xs text-muted-foreground mb-4">
                 {contactInfo.description}
               </p>
-              <Button size="sm" onClick={contactInfo.onContact}>
-                {contactInfo.buttonText}
+              <Button asChild size="sm">
+                <Link
+                  href="https://cal.com/manasa-madapu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {contactInfo.buttonText}
+                </Link>
               </Button>
             </motion.div>
           )}
