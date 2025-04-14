@@ -3,3 +3,5 @@ content:
     label: Posts
     path: apps/web/content/blog
     type: collection
+    view:
+      fields: [ title ]
