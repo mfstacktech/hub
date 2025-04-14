@@ -17,8 +17,8 @@ const geistMono = localFont({
 
 export const metadata = createMetadata({
   title: {
-    template: "%s | locospec",
-    default: "locospec",
+    template: "%s | MFStack",
+    default: "MFStack",
   },
   description: description,
   metadataBase: baseUrl,
@@ -32,7 +32,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       suppressHydrationWarning
     >
       <head>
-        <meta name="apple-mobile-web-app-title" content="Locospec" />
+        <meta name="apple-mobile-web-app-title" content="MFStack" />
         <link rel="shortcut icon" href="/icon.svg" />
         <link rel="apple-touch-icon" href="/icon.svg" />
         <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />

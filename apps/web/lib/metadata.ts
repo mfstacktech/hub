@@ -5,21 +5,21 @@ export function createMetadata(override: Metadata): Metadata {
     ...override,
     authors: [
       {
-        name: "locospec",
-        url: "https://locospec.com",
+        name: "mfstack",
+        url: "https://mfstack.com",
       },
     ],
-    creator: "locospec",
+    creator: "mfstack",
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      url: "https://locospec.com",
-      siteName: "locospec.com",
+      url: "https://mfstack.com",
+      siteName: "mfstack.com",
       ...override.openGraph,
     },
     twitter: {
       card: "summary_large_image",
-      creator: "@locospec",
+      creator: "@mfstacktech",
       title: override.title ?? undefined,
       description: override.description ?? undefined,
       ...override.twitter,
