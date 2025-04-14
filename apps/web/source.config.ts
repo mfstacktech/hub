@@ -55,6 +55,7 @@ export const blog = defineCollections({
 export default defineConfig({
   lastModifiedTime: "git",
   mdxOptions: {
+    providerImportSource: "@/mdx-components",
     rehypeCodeOptions: {
       inline: "tailing-curly-colon",
       themes: {
