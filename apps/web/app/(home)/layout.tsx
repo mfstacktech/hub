@@ -15,13 +15,13 @@ export default function Layout({ children }: { children: ReactNode }) {
   const isHomePage = false; // pathname === "/";
   const footerNavigation = {
     solutions: [
-      { name: "Marketing", href: "/marketing" },
-      { name: "Analytics", href: "/analytics" },
-      { name: "Automation", href: "/automation" },
-      { name: "Commerce", href: "/commerce" },
+      { name: "Pricing", href: "/pricing" },
+      { name: "Blog", href: "/blog" },
+      { name: "About", href: "/about" },
+      { name: "Roadmap", href: "/roadmap" },
     ],
     support: [
-      { name: "Documentation", href: "/docs" },
+      { name: "Blog", href: "/blog" },
       { name: "Guides", href: "/guides" },
       { name: "API Status", href: "/api-status" },
     ],
@@ -39,12 +39,12 @@ export default function Layout({ children }: { children: ReactNode }) {
     social: [
       {
         name: "Twitter",
-        href: "https://x.com/rjv_im",
+        href: "https://x.com/mfstacktech",
         icon: Icons.x,
       },
       {
         name: "GitHub",
-        href: "https://github.com/rjvim",
+        href: "https://github.com/mfstacktech",
         icon: Icons.github,
       },
     ],

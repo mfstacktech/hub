@@ -6,6 +6,7 @@ import WhyUs from "@/components/landing/why-us";
 import Faqs from "@/components/landing/faqs";
 import ConvertKitForm from "@/components/landing/mfstack/ConvertKitForm";
 import RightImage from "../stripe/(components)/right-image";
+import { Faqs2, FaqSection } from "@/components/landing/faqs2";
 
 export default function HomePage() {
   return (
@@ -32,9 +33,10 @@ export default function HomePage() {
           <div className="py-12">
             <WhyUs />
           </div>
-          {/* <div className="py-12">
-            <Faqs />
-          </div> */}
+          <div className="py-12">
+            {/* <Faqs /> */}
+            <Faqs2 />
+          </div>
         </div>
       </div>
     </>
