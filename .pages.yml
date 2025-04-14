@@ -10,3 +10,7 @@ content:
     filename: field.title.mdx
     view:
       fields: [ title ]
+    fields:
+      - name: title
+        label: Title
+        type: string
