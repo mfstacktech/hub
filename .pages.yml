@@ -5,7 +5,7 @@ content:
     type: file
   - name: posts
     label: Posts
-    path: apps/web/content/blog
+    path: apps/web/content/blo
     type: collection
     filename: field.title.mdx
     view:
