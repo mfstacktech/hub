@@ -3,8 +3,8 @@ content:
     label: Categories
     path: apps/web/lib/categories.ts
     type: file
-  - name: blog
-    label: Blog
+  - name: posts
+    label: Posts
     path: apps/web/content/blog
     type: collection
     filename: "{fields.title}.mdx"
