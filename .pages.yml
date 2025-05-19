@@ -21,10 +21,10 @@ content:
          rows: 2
       - name: author
         label: Author
-        type: text
+        type: string
       - name: category
         label: Category
-        type: text
+        type: string
       - name: date
         label: Date
         type: date
