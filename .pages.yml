@@ -19,6 +19,9 @@ content:
         type: text
         options:
          rows: 2
+      - name: category
+        label: Category
+        type: text
       - name: date
         label: Date
         type: date
