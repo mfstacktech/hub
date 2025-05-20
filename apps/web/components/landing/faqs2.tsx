@@ -47,32 +47,32 @@ function FaqSection({
         />
 
         {/* FAQ Items */}
-        <div className="mx-auto max-w-4xl">
-          <dl className="space-y-6 divide-y divide-border/10">
+        <div className="mx-auto max-w-2xl">
+          <motion.dl 
+            className="space-y-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
             {items.map((faq, index) => (
               <Disclosure as="div" key={index}>
                 {({ open }) => {
-                  const itemRef = useRef(null);
-                  const isItemInView = useInView(itemRef, { once: false, margin: "-50px" });
-                  
                   return (
                   <motion.div
-                    ref={itemRef}
                     initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: isItemInView ? 1 : 0, y: isItemInView ? 0 : 10 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, delay: index * 0.05 }}
                     className={cn(
-                      "group rounded-lg py-4",
+                      "group rounded-lg",
                       "transition-all duration-200 ease-in-out",
                       "border border-border/50",
-                      "bg-background/80",
                       open
-                        ? "bg-gradient-to-br from-background via-muted/30 to-background"
-                        : "hover:bg-muted/20"
+                        ? "bg-gradient-to-br from-background via-muted/50 to-background"
+                        : "hover:bg-muted/50"
                     )}
                   >
                     <dt>
-                      <DisclosureButton className="flex w-full items-start justify-between text-left text-foreground cursor-pointer px-6">
+                      <DisclosureButton className="flex w-full items-start justify-between text-left text-foreground cursor-pointer px-6 py-4 h-auto hover:bg-transparent">
                         <span
                           className={cn(
                             "text-base font-medium transition-colors duration-200 text-left",
@@ -114,7 +114,6 @@ function FaqSection({
                               opacity: 0,
                               transition: { duration: 0.2, ease: "easeIn" },
                             }}
-                            className="overflow-hidden"
                           >
                             <div className="px-6 pb-4 pt-2">
                               <motion.p
@@ -136,7 +135,7 @@ function FaqSection({
                 }}
               </Disclosure>
             ))}
-          </dl>
+          </motion.dl>
         </div>
       </div>
     </section>
