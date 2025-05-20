@@ -10,7 +10,7 @@ const config = {
   basePath: "",
   images: { unoptimized: true },
   experimental: {
-    viewTransition: true,
+    viewTransition: false,
   },
   typescript: {
     ignoreBuildErrors: true,

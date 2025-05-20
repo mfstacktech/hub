@@ -5,7 +5,8 @@ import { Toaster } from "@repo/shadcn/components/sonner";
 import { TooltipProvider } from "@repo/shadcn/components/tooltip";
 import { RootProvider } from "fumadocs-ui/provider";
 import type { ReactNode } from "react";
-import { unstable_ViewTransition as ViewTransition } from "react";
+// ViewTransition removed to fix flickering with accordion components
+// import { unstable_ViewTransition as ViewTransition } from "react";
 
 export function Provider({
   children,
@@ -41,7 +42,7 @@ export function Provider({
         }}
       >
         <TooltipProvider>
-          <ViewTransition>{children}</ViewTransition>
+          {children}
         </TooltipProvider>
         <Toaster />
       </RootProvider>

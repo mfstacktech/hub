@@ -69,7 +69,13 @@ function FaqSection({
                   >
                     <dt>
                       <DisclosureButton className="flex w-full items-start justify-between text-left text-foreground cursor-pointer">
-                        <span className="text-base font-semibold leading-7 break-words pr-6">
+                        <span
+                          className={cn(
+                            "text-base font-medium transition-colors duration-200 text-left",
+                            "text-foreground/70",
+                            open && "text-foreground"
+                          )}
+                        >
                           {faq.question}
                         </span>
                         <span className="ml-6 flex h-7 items-center">
@@ -86,14 +92,22 @@ function FaqSection({
                       </DisclosureButton>
                     </dt>
                     <div className="overflow-hidden">
-                      {open && (
-                        <DisclosurePanel
-                          transition
-                          className="origin-top transition ease-out data-closed:-translate-y-6 data-closed:opacity-0 pt-2"
-                        >
-                          {faq.answer}
-                        </DisclosurePanel>
-                      )}
+                      <AnimatePresence initial={false}>
+                        {open && (
+                          <DisclosurePanel static>
+                            <div className="pt-2">
+                              <motion.p
+                                initial={{ y: -10, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                exit={{ y: -10, opacity: 0 }}
+                                className="text-sm text-muted-foreground leading-relaxed"
+                              >
+                                {faq.answer}
+                              </motion.p>
+                            </div>
+                          </DisclosurePanel>
+                        )}
+                      </AnimatePresence>
                     </div>
                   </motion.div>
                 )}
