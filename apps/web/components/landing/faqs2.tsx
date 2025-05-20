@@ -29,13 +29,7 @@ function FaqSection({
   ...props
 }: FaqSectionProps) {
   return (
-    <section
-      className={cn(
-        "py-16 w-full",
-        className
-      )}
-      {...props}
-    >
+    <section className={cn("py-16 w-full", className)} {...props}>
       <div className="container">
         {/* Header */}
         <div className="mx-auto max-w-4xl text-center mb-12">
@@ -43,15 +37,21 @@ function FaqSection({
             {title}
           </h2>
           {description && (
-            <p className="mt-4 text-base text-muted-foreground">{description}</p>
+            <p className="mt-4 text-base text-muted-foreground">
+              {description}
+            </p>
           )}
         </div>
 
         {/* FAQ Items */}
         <div className="mx-auto max-w-4xl">
-          <dl className="mt-10 space-y-6 divide-y divide-border/10">
+          <dl className="space-y-6 divide-y divide-border/10">
             {items.map((faq, index) => (
-              <Disclosure as="div" key={index} className="pt-6 first:pt-0">
+              <Disclosure
+                as="div"
+                key={index}
+                className="py-4 rounded-lg px-6 border border-border/50"
+              >
                 {({ open }) => (
                   <>
                     <dt>
@@ -62,32 +62,26 @@ function FaqSection({
                         <span className="ml-6 flex h-7 items-center">
                           <ChevronDownIcon
                             className={cn(
-                              "h-5 w-5 transition-transform", 
-                              open ? "rotate-180 text-primary" : "text-muted-foreground"
+                              "h-5 w-5 transition-transform",
+                              open
+                                ? "rotate-180 text-primary"
+                                : "text-muted-foreground"
                             )}
                             aria-hidden="true"
                           />
                         </span>
                       </DisclosureButton>
                     </dt>
-                    <AnimatePresence>
+                    <div className="overflow-hidden">
                       {open && (
-                        <DisclosurePanel static as={Fragment}>
-                          <motion.div
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <dd className="mt-2 pr-12">
-                              <p className="text-base leading-7 text-muted-foreground">
-                                {faq.answer}
-                              </p>
-                            </dd>
-                          </motion.div>
+                        <DisclosurePanel
+                          transition
+                          className="origin-top transition ease-out data-closed:-translate-y-6 data-closed:opacity-0 pt-2"
+                        >
+                          {faq.answer}
                         </DisclosurePanel>
                       )}
-                    </AnimatePresence>
+                    </div>
                   </>
                 )}
               </Disclosure>
