@@ -32,7 +32,12 @@ function FaqSection({
     <section className={cn("py-16 w-full", className)} {...props}>
       <div className="container">
         {/* Header */}
-        <div className="mx-auto max-w-4xl text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mx-auto max-w-4xl text-center mb-12"
+        >
           <h2 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
             {title}
           </h2>
@@ -41,21 +46,29 @@ function FaqSection({
               {description}
             </p>
           )}
-        </div>
+        </motion.div>
 
         {/* FAQ Items */}
         <div className="mx-auto max-w-4xl">
           <dl className="space-y-6 divide-y divide-border/10">
             {items.map((faq, index) => (
-              <Disclosure
-                as="div"
-                key={index}
-                className="py-4 rounded-lg px-6 border border-border/50"
-              >
+              <Disclosure as="div" key={index}>
                 {({ open }) => (
-                  <>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, delay: index * 0.1 }}
+                    className={cn(
+                      "group rounded-lg py-4 px-6",
+                      "transition-all duration-200 ease-in-out",
+                      "border border-border/50",
+                      open
+                        ? "bg-gradient-to-br from-background via-muted/50 to-background"
+                        : "hover:bg-muted/50"
+                    )}
+                  >
                     <dt>
-                      <DisclosureButton className="flex w-full items-start justify-between text-left text-foreground">
+                      <DisclosureButton className="flex w-full items-start justify-between text-left text-foreground cursor-pointer">
                         <span className="text-base font-semibold leading-7 break-words pr-6">
                           {faq.question}
                         </span>
@@ -82,7 +95,7 @@ function FaqSection({
                         </DisclosurePanel>
                       )}
                     </div>
-                  </>
+                  </motion.div>
                 )}
               </Disclosure>
             ))}
