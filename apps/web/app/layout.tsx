@@ -32,16 +32,20 @@ export default function Layout({ children }: { children: ReactNode }) {
       suppressHydrationWarning
     >
       <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
         <meta name="apple-mobile-web-app-title" content="MFStack" />
         <link rel="shortcut icon" href="/icon.svg" />
         <link rel="apple-touch-icon" href="/icon.svg" />
         <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
         <link rel="icon" type="image/png" href="/icon.png" />
-        <script
+        {/* <script
           crossOrigin="anonymous"
           src="//cdn.jsdelivr.net/npm/meta-scan@0.11.2/dist/auto.global.js"
           data-auto-enable={"false"}
-        />
+        /> */}
       </head>
       <body
         className={cn("relative flex min-h-svh flex-col overflow-x-hidden")}
