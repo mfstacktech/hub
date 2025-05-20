@@ -4,7 +4,7 @@
 import * as React from "react";
 import { Fragment } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDownIcon } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Disclosure,
@@ -59,16 +59,17 @@ function FaqSection({
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.2, delay: index * 0.1 }}
                     className={cn(
-                      "group rounded-lg py-4 px-6",
+                      "group rounded-lg py-4",
                       "transition-all duration-200 ease-in-out",
                       "border border-border/50",
+                      "bg-background/80",
                       open
-                        ? "bg-gradient-to-br from-background via-muted/50 to-background"
-                        : "hover:bg-muted/50"
+                        ? "bg-gradient-to-br from-background via-muted/30 to-background"
+                        : "hover:bg-muted/20"
                     )}
                   >
                     <dt>
-                      <DisclosureButton className="flex w-full items-start justify-between text-left text-foreground cursor-pointer">
+                      <DisclosureButton className="flex w-full items-start justify-between text-left text-foreground cursor-pointer px-6">
                         <span
                           className={cn(
                             "text-base font-medium transition-colors duration-200 text-left",
@@ -78,37 +79,55 @@ function FaqSection({
                         >
                           {faq.question}
                         </span>
-                        <span className="ml-6 flex h-7 items-center">
-                          <ChevronDownIcon
-                            className={cn(
-                              "h-5 w-5 transition-transform",
-                              open
-                                ? "rotate-180 text-primary"
-                                : "text-muted-foreground"
-                            )}
-                            aria-hidden="true"
-                          />
-                        </span>
+                        <motion.span
+                          className={cn(
+                            "ml-6 flex-shrink-0 flex h-7 items-center",
+                            "p-0.5 rounded-full",
+                            "transition-colors duration-200",
+                            open ? "text-primary" : "text-muted-foreground"
+                          )}
+                          animate={{
+                            rotate: open ? 180 : 0,
+                            scale: open ? 1.1 : 1,
+                          }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <ChevronDown className="h-4 w-4" />
+                        </motion.span>
                       </DisclosureButton>
                     </dt>
-                    <div className="overflow-hidden">
-                      <AnimatePresence initial={false}>
-                        {open && (
-                          <DisclosurePanel static>
-                            <div className="pt-2">
+                    <AnimatePresence initial={false}>
+                      {open && (
+                        <DisclosurePanel static>
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{
+                              height: "auto",
+                              opacity: 1,
+                              transition: { duration: 0.2, ease: "easeOut" },
+                            }}
+                            exit={{
+                              height: 0,
+                              opacity: 0,
+                              transition: { duration: 0.2, ease: "easeIn" },
+                            }}
+                            className="overflow-hidden"
+                          >
+                            <div className="px-6 pb-4 pt-2">
                               <motion.p
                                 initial={{ y: -10, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 exit={{ y: -10, opacity: 0 }}
+                                transition={{ duration: 0.15 }}
                                 className="text-sm text-muted-foreground leading-relaxed"
                               >
                                 {faq.answer}
                               </motion.p>
                             </div>
-                          </DisclosurePanel>
-                        )}
-                      </AnimatePresence>
-                    </div>
+                          </motion.div>
+                        </DisclosurePanel>
+                      )}
+                    </AnimatePresence>
                   </motion.div>
                 )}
               </Disclosure>
