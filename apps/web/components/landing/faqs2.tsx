@@ -2,8 +2,8 @@
 "use client";
 
 import * as React from "react";
-import { Fragment } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Fragment, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -11,6 +11,7 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from "@headlessui/react";
+import SectionHeader from "./mfstack/SectionHeader";
 
 interface FaqSectionProps extends React.HTMLAttributes<HTMLElement> {
   title: string;
@@ -28,36 +29,38 @@ function FaqSection({
   items,
   ...props
 }: FaqSectionProps) {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  
   return (
-    <section className={cn("py-16 w-full", className)} {...props}>
+    <section ref={sectionRef} className={cn("py-16 w-full", className)} {...props}>
       <div className="container">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto max-w-4xl text-center mb-12"
-        >
-          <h2 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            {title}
-          </h2>
-          {description && (
-            <p className="mt-4 text-base text-muted-foreground">
-              {description}
-            </p>
-          )}
-        </motion.div>
+        <SectionHeader 
+          sectionTitle={title}
+          sectionDescription={description}
+          className="mx-auto max-w-4xl mb-12"
+        />
 
         {/* FAQ Items */}
         <div className="mx-auto max-w-4xl">
           <dl className="space-y-6 divide-y divide-border/10">
             {items.map((faq, index) => (
               <Disclosure as="div" key={index}>
-                {({ open }) => (
+                {({ open }) => {
+                  const itemRef = useRef(null);
+                  const isItemInView = useInView(itemRef, { once: false, margin: "-50px" });
+                  
+                  return (
                   <motion.div
+                    ref={itemRef}
                     initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2, delay: index * 0.1 }}
+                    animate={{ opacity: isItemInView ? 1 : 0, y: isItemInView ? 0 : 10 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
                     className={cn(
                       "group rounded-lg py-4",
                       "transition-all duration-200 ease-in-out",
@@ -129,7 +132,8 @@ function FaqSection({
                       )}
                     </AnimatePresence>
                   </motion.div>
-                )}
+                );
+                }}
               </Disclosure>
             ))}
           </dl>
