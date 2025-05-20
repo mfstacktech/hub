@@ -5,6 +5,8 @@ import { Calendar } from "lucide-react";
 import { Button } from "@repo/shadcn/components/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { useRef } from "react";
+import { useScroll, useTransform, useInView } from "framer-motion";
 
 type ContactInfo = {
   title: string;
@@ -18,12 +20,26 @@ type ContactSectionProps = {
   className?: string;
 };
 
-export function ContactSection({ contactInfo, className }: ContactSectionProps) {
+export function ContactSection({
+  contactInfo,
+  className,
+}: ContactSectionProps) {
+  const sectionRef = useRef(null);
+
+  const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+
   return (
     <motion.div
+      ref={sectionRef}
+      style={{ scale }}
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.3 }}
+      animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
+      transition={{ duration: 0.5 }}
       className={cn(
         "max-w-md mx-auto p-6 rounded-lg text-center bg-muted/30",
         className
