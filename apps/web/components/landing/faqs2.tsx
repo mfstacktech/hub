@@ -3,10 +3,9 @@
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, ChevronDown, Mail } from "lucide-react";
+import { ChevronDown, MinusIcon, PlusIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "@repo/shadcn/components/button";
-import Link from "next/link";
+import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
 
 interface FaqSectionProps extends React.HTMLAttributes<HTMLElement> {
   title: string;
@@ -32,124 +31,111 @@ function FaqSection({
       )}
       {...props}
     >
-        <div className="container">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-2xl mx-auto text-center mb-12"
-          >
-            <h2 className="text-3xl font-semibold mb-3 bg-gradient-to-r from-foreground via-foreground/80 to-foreground bg-clip-text text-transparent">
-              {title}
-            </h2>
-            {description && (
-              <p className="text-sm text-muted-foreground">{description}</p>
-            )}
-          </motion.div>
+      <div className="container">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-2xl mx-auto text-center mb-12"
+        >
+          <h2 className="text-3xl font-semibold mb-3 bg-gradient-to-r from-foreground via-foreground/80 to-foreground bg-clip-text text-transparent">
+            {title}
+          </h2>
+          {description && (
+            <p className="text-sm text-muted-foreground">{description}</p>
+          )}
+        </motion.div>
 
-          {/* FAQ Items */}
-          <div className="max-w-2xl mx-auto space-y-2">
-            {items.map((item, index) => (
-              <FaqItem
-                key={index}
-                question={item.question}
-                answer={item.answer}
-                index={index}
-              />
-            ))}
-          </div>
+        {/* FAQ Items */}
+        <div className="max-w-2xl mx-auto space-y-2">
+          {items.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2, delay: index * 0.1 }}
+              className={cn(
+                "rounded-lg",
+                "transition-all duration-200 ease-in-out",
+                "border border-border/50",
+                "overflow-hidden"
+              )}
+            >
+              <Disclosure>
+                {({ open }) => (
+                  <div className={cn(
+                    open ? "bg-gradient-to-br from-background via-muted/50 to-background" : "hover:bg-muted/50"
+                  )}>
+                    <dt>
+                      <DisclosureButton className="group flex w-full items-start justify-between text-left px-6 py-4">
+                        <span className={cn(
+                          "text-base font-medium break-words pr-6",
+                          "transition-colors duration-200",
+                          "text-foreground/70",
+                          open && "text-foreground"
+                        )}>
+                          {item.question}
+                        </span>
+                        <motion.span 
+                          className={cn(
+                            "ml-6 flex-shrink-0 flex h-7 items-center",
+                            "p-0.5 rounded-full",
+                            "transition-colors duration-200",
+                            open ? "text-primary" : "text-muted-foreground"
+                          )}
+                          animate={{
+                            rotate: open ? 180 : 0,
+                            scale: open ? 1.1 : 1,
+                          }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <ChevronDown className="h-4 w-4" />
+                        </motion.span>
+                      </DisclosureButton>
+                    </dt>
+                    <AnimatePresence initial={false}>
+                      {open && (
+                        <DisclosurePanel static>
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{
+                              height: "auto",
+                              opacity: 1,
+                              transition: { duration: 0.2, ease: "easeOut" },
+                            }}
+                            exit={{
+                              height: 0,
+                              opacity: 0,
+                              transition: { duration: 0.2, ease: "easeIn" },
+                            }}
+                          >
+                            <div className="px-6 pb-4 pt-2">
+                              <motion.p
+                                initial={{ y: -10, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                exit={{ y: -10, opacity: 0 }}
+                                className="text-sm text-muted-foreground leading-relaxed"
+                              >
+                                {item.answer}
+                              </motion.p>
+                            </div>
+                          </motion.div>
+                        </DisclosurePanel>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )}
+              </Disclosure>
+            </motion.div>
+          ))}
+        </div>
         </div>
       </section>
   );
 }
 
-// Internal FaqItem component
-function FaqItem({
-  question,
-  answer,
-  index,
-}: {
-  question: string;
-  answer: string;
-  index: number;
-}) {
-  const [isOpen, setIsOpen] = React.useState(false);
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2, delay: index * 0.1 }}
-      className={cn(
-        "group rounded-lg",
-        "transition-all duration-200 ease-in-out",
-        "border border-border/50",
-        isOpen
-          ? "bg-gradient-to-br from-background via-muted/50 to-background"
-          : "hover:bg-muted/50"
-      )}
-    >
-      <Button
-        variant="ghost"
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-6 py-4 h-auto justify-between hover:bg-transparent"
-      >
-        <h3
-          className={cn(
-            "text-base font-medium transition-colors duration-200",
-            "text-foreground/70",
-            isOpen && "text-foreground"
-          )}
-        >
-          {question}
-        </h3>
-        <motion.div
-          animate={{
-            rotate: isOpen ? 180 : 0,
-            scale: isOpen ? 1.1 : 1,
-          }}
-          transition={{ duration: 0.2 }}
-          className={cn(
-            "p-0.5 rounded-full flex-shrink-0",
-            "transition-colors duration-200",
-            isOpen ? "text-primary" : "text-muted-foreground"
-          )}
-        >
-          <ChevronDown className="h-4 w-4" />
-        </motion.div>
-      </Button>
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{
-              height: "auto",
-              opacity: 1,
-              transition: { duration: 0.2, ease: "easeOut" },
-            }}
-            exit={{
-              height: 0,
-              opacity: 0,
-              transition: { duration: 0.2, ease: "easeIn" },
-            }}
-          >
-            <div className="px-6 pb-4 pt-2">
-              <motion.p
-                initial={{ y: -10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -10, opacity: 0 }}
-                className="text-sm text-muted-foreground leading-relaxed"
-              >
-                {answer}
-              </motion.p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-}
 
 const faqQuestions = [
   {
