@@ -5,7 +5,11 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, MinusIcon, PlusIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@headlessui/react";
 
 interface FaqSectionProps extends React.HTMLAttributes<HTMLElement> {
   title: string;
@@ -64,20 +68,26 @@ function FaqSection({
             >
               <Disclosure>
                 {({ open }) => (
-                  <div className={cn(
-                    open ? "bg-gradient-to-br from-background via-muted/50 to-background" : "hover:bg-muted/50"
-                  )}>
+                  <div
+                    className={cn(
+                      open
+                        ? "bg-gradient-to-br from-background via-muted/50 to-background"
+                        : "hover:bg-muted/50"
+                    )}
+                  >
                     <dt>
                       <DisclosureButton className="group flex w-full items-start justify-between text-left px-6 py-4">
-                        <span className={cn(
-                          "text-base font-medium break-words pr-6",
-                          "transition-colors duration-200",
-                          "text-foreground/70",
-                          open && "text-foreground"
-                        )}>
+                        <span
+                          className={cn(
+                            "text-base font-medium break-words pr-6",
+                            "transition-colors duration-200",
+                            "text-foreground/70",
+                            open && "text-foreground"
+                          )}
+                        >
                           {item.question}
                         </span>
-                        <motion.span 
+                        <motion.span
                           className={cn(
                             "ml-6 flex-shrink-0 flex h-7 items-center",
                             "p-0.5 rounded-full",
@@ -130,38 +140,36 @@ function FaqSection({
             </motion.div>
           ))}
         </div>
-        </div>
-      </section>
+      </div>
+    </section>
   );
 }
-
-
 
 const faqQuestions = [
   {
     question: "What Mutual fund Transaction Providers do you Support?",
     answer: "Our Transaction production is powered by Fintech Primitive APIs.",
   },
-  // {
-  //   question: "How can I go live in minutes to start MF distribution online?",
-  //   answer:
-  //     "Distribute Mutual Funds online in just 3 steps: Obtain your ARN and complete AMC empanelment; Get APIs from Fintech Primitives; Sign up with MF Stack to go live in minutes - start for free!",
-  // },
-  // {
-  //   question: "What kind of transactions do you support?",
-  //   answer:
-  //     "We support the following kinds of transactions: One time purchase, SIP, Switch, SWP, STP and Redemption",
-  // },
-  // {
-  //   question: "What features do you support for SIP investments?",
-  //   answer:
-  //     "We support Pause, Cancel and Resume of SIP. Other than this we also support Step up and Step down SIPs",
-  // },
-  // {
-  //   question: "Do you build solutions for customized MF Product?",
-  //   answer:
-  //     "Yes, we can build a custom solution for your needs. You can setup a call with our team which will understand your requirements, and layout a plan for your custom application. We take care of the look and feel of your app and build you an enterprise grade application which can help you scale your business.",
-  // },
+  {
+    question: "How can I go live in minutes to start MF distribution online?",
+    answer:
+      "Distribute Mutual Funds online in just 3 steps: Obtain your ARN and complete AMC empanelment; Get APIs from Fintech Primitives; Sign up with MF Stack to go live in minutes - start for free!",
+  },
+  {
+    question: "What kind of transactions do you support?",
+    answer:
+      "We support the following kinds of transactions: One time purchase, SIP, Switch, SWP, STP and Redemption",
+  },
+  {
+    question: "What features do you support for SIP investments?",
+    answer:
+      "We support Pause, Cancel and Resume of SIP. Other than this we also support Step up and Step down SIPs",
+  },
+  {
+    question: "Do you build solutions for customized MF Product?",
+    answer:
+      "Yes, we can build a custom solution for your needs. You can setup a call with our team which will understand your requirements, and layout a plan for your custom application. We take care of the look and feel of your app and build you an enterprise grade application which can help you scale your business.",
+  },
   // Commented FAQs preserved from original file
   // {
   //   question: "How to migrate my current investors to FP?",
