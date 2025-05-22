@@ -21,13 +21,15 @@ import { Navbar, NavbarMenuLink } from "./navbar";
 import { cn } from "@repo/shadcn/lib/utils";
 
 export const Header = ({
-  nav: { enableSearch = true, ...nav } = {},
+  nav: { ...nav } = {},
   i18n = false,
+  enableSearch = false,
   finalLinks,
   isHomePage,
 }: HomeLayoutProps & {
   finalLinks: LinkItemType[];
   isHomePage: boolean;
+  enableSearch?: boolean;
 }) => {
   const navItems = finalLinks.filter((item) =>
     ["nav", "all"].includes(item.on ?? "all")

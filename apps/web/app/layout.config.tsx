@@ -30,30 +30,30 @@ export const baseOptions: BaseLayoutProps = {
 };
 
 export const linkItems: LinkItemType[] = [
-  {
-    icon: <Icons.info />,
-    text: "Pricing",
-    url: "/pricing",
-    active: "url",
-  },
-  {
-    icon: <Icons.info />,
-    text: "Blog",
-    url: "/blog",
-    active: "url",
-  },
-  {
-    icon: <Icons.info />,
-    text: "About",
-    url: "/about",
-    active: "url",
-  },
-  {
-    icon: <Icons.info />,
-    text: "Roadmap",
-    url: "/roadmap",
-    active: "url",
-  },
+  // {
+  //   icon: <Icons.info />,
+  //   text: "Pricing",
+  //   url: "/pricing",
+  //   active: "url",
+  // },
+  // {
+  //   icon: <Icons.info />,
+  //   text: "Blog",
+  //   url: "/blog",
+  //   active: "url",
+  // },
+  // {
+  //   icon: <Icons.info />,
+  //   text: "About",
+  //   url: "/about",
+  //   active: "url",
+  // },
+  // {
+  //   icon: <Icons.info />,
+  //   text: "Roadmap",
+  //   url: "/roadmap",
+  //   active: "url",
+  // },
   // {
   //   icon: <Icons.posts />,
   //   text: "Me",

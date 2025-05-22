@@ -168,18 +168,9 @@ const GalleryWithTags = () => {
     offset: ["start 0.9", "start 0.1"],
   });
 
-  const containerScale = useTransform(scrollYProgress, [0, 1], [0.95, 1], {
+  const containerScale = useTransform(scrollYProgress, [0, 1], [0.9, 1], {
     clamp: true,
   });
-
-  const shuffleArray = (array) => {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  };
 
   const handleTagChange = (tag) => {
     setActiveTag(tag);
@@ -187,7 +178,7 @@ const GalleryWithTags = () => {
       tag === "All"
         ? whatWeSolveCards
         : whatWeSolveCards.filter((card) => card.tags.includes(tag));
-    setShuffledCards(shuffleArray(filtered));
+    setShuffledCards([...filtered]); // Maintain original order without shuffling
   };
 
   // Debounce implementation
