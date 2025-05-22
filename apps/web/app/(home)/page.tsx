@@ -17,6 +17,7 @@ import {
   LockClosedIcon,
   ServerIcon,
 } from "@heroicons/react/20/solid";
+import ScrollLinked from "@/components/progress-bar";
 
 const features = [
   {
@@ -112,9 +113,10 @@ function Example() {
 export default function HomePage() {
   return (
     <>
+      <ScrollLinked />
       <RightImage />
 
-      <Example />
+      {/* <Example /> */}
 
       <div className="relative flex flex-col items-center justify-center w-full mx-auto container space-y-8 px-4 lg:px-6">
         <GridBackground maxWidthClass="container" />
@@ -144,7 +146,7 @@ export default function HomePage() {
                 title: "Still have questions?",
                 description: "We're here to help you",
                 buttonText: "Contact Support",
-                calendarUrl: "https://cal.com/manasa-madapu"
+                calendarUrl: "https://cal.com/manasa-madapu",
               }}
             />
           </div>
