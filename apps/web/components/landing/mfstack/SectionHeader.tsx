@@ -1,7 +1,13 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useAnimate, useInView } from "framer-motion";
+import {
+  motion,
+  useAnimate,
+  useInView,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 interface SectionHeaderProps {
   sectionTag?: string;
@@ -19,9 +25,21 @@ const SectionHeader = ({
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope, { once: false, margin: "-100px" });
 
+  const titleRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: titleRef,
+    offset: ["start end", "end start"],
+  });
+
+  const fontSize = useTransform(
+    scrollYProgress,
+    [0, 1], // 5 steps
+    ["2rem", "3rem"] // Corresponding font sizes
+  );
+
   return (
     <div ref={scope} className={`text-center mx-auto ${className || ""}`}>
-      {/* {sectionTag && (
+      {sectionTag && (
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 10 }}
@@ -30,17 +48,19 @@ const SectionHeader = ({
         >
           {sectionTag}
         </motion.p>
-      )} */}
+      )}
       <motion.h2
+        ref={titleRef}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 3 }}
+        transition={{ duration: 1 }}
         viewport={{ once: true }}
+        style={{ fontSize }}
         className="mt-2 text-pretty text-5xl font-semibold tracking-tight text-gray-900 dark:text-gray-50 lg:text-balance"
       >
         {sectionTitle}
       </motion.h2>
-      {/* {sectionDescription && (
+      {sectionDescription && (
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
@@ -49,7 +69,7 @@ const SectionHeader = ({
         >
           {sectionDescription}
         </motion.p>
-      )} */}
+      )}
     </div>
   );
 };
