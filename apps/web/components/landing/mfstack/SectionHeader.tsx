@@ -34,7 +34,7 @@ const SectionHeader = ({
   const fontSize = useTransform(
     scrollYProgress,
     [0, 1], // 5 steps
-    ["2rem", "3rem"] // Corresponding font sizes
+    ["2.75rem", "3rem"] // Corresponding font sizes
   );
 
   return (
