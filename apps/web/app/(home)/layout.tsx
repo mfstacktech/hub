@@ -97,10 +97,10 @@ export default function Layout({ children }: { children: ReactNode }) {
       )}
 
       <BigFooter
-        solutions={footerNavigation.solutions}
-        support={footerNavigation.support}
-        company={footerNavigation.company}
-        media={footerNavigation.media}
+        // solutions={footerNavigation.solutions}
+        // support={footerNavigation.support}
+        // company={footerNavigation.company}
+        // media={footerNavigation.media}
         social={footerNavigation.social}
         companyName="mfstack"
         companyDescription="MFStack is an Ecosystem to scale Mutual Funds Distribution"
