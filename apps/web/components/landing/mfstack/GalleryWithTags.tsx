@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import WhatWeSolveIcons from "./WhatWeSolveIcons";
 
 const GalleryWithTags = () => {
@@ -162,6 +162,15 @@ const GalleryWithTags = () => {
 
   const [activeTag, setActiveTag] = useState("Fintechs");
   const [shuffledCards, setShuffledCards] = useState(whatWeSolveCards);
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 0.9", "start 0.1"],
+  });
+
+  const containerScale = useTransform(scrollYProgress, [0, 1], [0.95, 1], {
+    clamp: true,
+  });
 
   const shuffleArray = (array) => {
     const shuffled = [...array];
@@ -248,38 +257,44 @@ const GalleryWithTags = () => {
 
       {/* Cards Section */}
       <div ref={sectionRef} className="mt-14">
-        <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <AnimatePresence>
-            {shuffledCards.map((card) => (
-              <motion.div
-                key={card.id}
-                className="bg-gray-50 dark:bg-gray-900 shadow-md hover:shadow-lg p-6 rounded-xl ring-1 ring-neutral-200 dark:ring-neutral-700 transition-shadow duration-300"
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                layout
+        <motion.div
+          ref={containerRef}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+          style={{
+            scale: containerScale,
+            transformOrigin: "center top",
+            willChange: "transform",
+          }}
+        >
+          {shuffledCards.map((card) => (
+            <motion.div
+              key={card.id}
+              className="bg-gray-50 dark:bg-gray-900 shadow-md hover:shadow-lg p-6 rounded-xl ring-1 ring-neutral-200 dark:ring-neutral-700 transition-shadow duration-300"
+              variants={cardVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              layout
+            >
+              <div
+                className="flex flex-col"
+                style={{
+                  minHeight: "100px",
+                  justifyContent: "space-between",
+                }}
               >
-                <div
-                  className="flex flex-col"
-                  style={{
-                    minHeight: "100px",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <div>
-                    <card.icon aria-hidden="true" />
-                    <h2 className="font-bold text-lg mt-2 text-gray-900 dark:text-gray-50">
-                      {card.name}
-                    </h2>
-                  </div>
-                  <dd className="text-base/7 text-gray-600 dark:text-gray-300">
-                    {card.description}
-                  </dd>
+                <div>
+                  <card.icon aria-hidden="true" />
+                  <h2 className="font-bold text-lg mt-2 text-gray-900 dark:text-gray-50">
+                    {card.name}
+                  </h2>
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+                <dd className="text-base/7 text-gray-600 dark:text-gray-300">
+                  {card.description}
+                </dd>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </div>
