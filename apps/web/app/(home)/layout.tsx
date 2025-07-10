@@ -103,7 +103,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         // media={footerNavigation.media}
         social={footerNavigation.social}
         companyName="mfstack"
-        companyDescription="MFStack is an Ecosystem to scale Mutual Funds Distribution"
+        companyDescription="MFStack is an Ecosystem to scale Mutual Fund Distribution Online"
       />
     </HomeLayout>
   );

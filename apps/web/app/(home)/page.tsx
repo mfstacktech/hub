@@ -146,7 +146,7 @@ export default function HomePage() {
                 title: "Still have questions?",
                 description: "We're here to help you",
                 buttonText: "Contact Support",
-                calendarUrl: "https://cal.com/manasa-madapu",
+                calendarUrl: "https://cal.com/varsha.pius",
               }}
             />
           </div>
