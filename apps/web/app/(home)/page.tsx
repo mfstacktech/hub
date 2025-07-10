@@ -5,7 +5,7 @@ import Features from "@/components/landing/features";
 import WhyUs from "@/components/landing/why-us";
 import Faqs from "@/components/landing/faqs";
 import ConvertKitForm from "@/components/landing/mfstack/ConvertKitForm";
-import RightImage from "../stripe/(components)/right-image";
+import RightImage from "../_stripe/(components)/right-image";
 import { Faqs2 } from "@/components/landing/faqs2";
 import { ContactSection } from "@/components/landing/contact-section";
 

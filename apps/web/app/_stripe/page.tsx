@@ -1,8 +1,8 @@
 // import AnimatedHero from "@workspace/ui/heros/animated-hero";
-import AccordionFeatures from "@/app/stripe/(components)/accordion-features";
-import RightImage from "@/app/stripe/(components)/right-image";
+import AccordionFeatures from "@/app/_stripe/(components)/accordion-features";
+import RightImage from "@/app/_stripe/(components)/right-image";
 import { GridBackground } from "@repo/ui/components/grid-background";
-import StickyScroll from "@/app/stripe/(components)/sticky-scroll";
+import StickyScroll from "@/app/_stripe/(components)/sticky-scroll";
 import StripePattern from "./(components)/stripe-pattern";
 import ResponsiveStripePattern from "./(components)/responsive-stripe-pattern";
 

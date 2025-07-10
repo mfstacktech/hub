@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
-import SimpleHeader from "@/app/stripe/(components)/headers/simple";
-import { SimpleNavigationMenu } from "@/app/stripe/(components)/navigation-menus/simple-horizontal";
-import { VerticalNavigationMenu } from "@/app/stripe/(components)/navigation-menus/simple-vertical";
-import BigFooter from "@/app/stripe/(components)/footers/big";
+import SimpleHeader from "@/app/_stripe/(components)/headers/simple";
+import { SimpleNavigationMenu } from "@/app/_stripe/(components)/navigation-menus/simple-horizontal";
+import { VerticalNavigationMenu } from "@/app/_stripe/(components)/navigation-menus/simple-vertical";
+import BigFooter from "@/app/_stripe/(components)/footers/big";
 import { Icons } from "@/components/icons";
 import StripeCanvas from "./(components)/canvas";
 
