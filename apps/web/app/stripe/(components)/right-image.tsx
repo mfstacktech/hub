@@ -41,14 +41,14 @@ export default function RightImage() {
               "isolate block mix-blend-color-burn"
             )}
           >
-            Launch Mutual Funds Mobile & Web Apps
+            Take your Mutual Funds Distribution digital in minutes
           </span>
 
           <p className="text-base md:text-lg">
-            The best mutual funds UI infrastructure to build and launch Mutual
-            Funds Mobile & Web Apps. Be it anyone IFAs, Fintechs, Wealth
+            The best UI infrastructure to build and launch Mutual
+            Funds Mobile & Web Apps in days. Built for IFAs, Independent Distributors, Fintechs, Wealth
             Management Companies to AMCs - MFStack helps you build MF Journeys
-            efficiently in matter of days.
+            efficiently.
           </p>
 
           <Button className="rounded-full">

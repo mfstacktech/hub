@@ -6,6 +6,7 @@ import { Icons } from "./icons";
 import { cn } from "@/lib/utils";
 import React from "react";
 import Link from "next/link";
+import MagicFooter from "./MagicFooter"
 
 export type FooterNavigationItem = {
   name: string;
@@ -115,10 +116,10 @@ export default function BigFooter({
 
   return (
     <footer>
-      <div className="relative isolate mx-auto container px-4 sm:px-6 lg:px-8 pt-16 pb-8 sm:pt-24 lg:pt-32">
+      <div className="relative isolate mx-auto container px-4 sm:px-6 lg:px-8 pt-20 pb-12">
         <GridBackground maxWidthClass="container" />
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          <div className="space-y-8">
+        <div className="xl:grid xl:grid-cols-5 xl:gap-8">
+          <div className="space-y-8 xl:col-span-1">
             {baseOptions.nav?.title}
             <p className="text-sm/6 text-balance text-gray-600">
               {companyDescription}
@@ -136,9 +137,14 @@ export default function BigFooter({
               ))}
             </div>
           </div>
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              {navigation.solutions && navigation.solutions?.length > 0 && (
+          <div className="mt-16 grid grid-cols-1 gap-8 xl:col-span-4 xl:mt-0">
+            <div className="md:grid md:grid-cols-1 md:gap-8">
+
+              <div>
+                <MagicFooter />
+              </div>
+              
+              {/* {navigation.solutions && navigation.solutions?.length > 0 && (
                 <div>
                   <h3 className="text-sm/6 font-semibold text-gray-900">
                     Solutions
@@ -175,9 +181,9 @@ export default function BigFooter({
                     ))}
                   </ul>
                 </div>
-              )}
+              )} */}
             </div>
-            <div className="md:grid md:grid-cols-2 md:gap-8">
+            {/* <div className="md:grid md:grid-cols-2 md:gap-8">
               {navigation.company && navigation.company?.length > 0 && (
                 <div>
                   <h3 className="text-sm/6 font-semibold text-gray-900">
@@ -216,7 +222,7 @@ export default function BigFooter({
                   </ul>
                 </div>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 flex flex-col md:flex-row gap-2 items-center justify-between">

@@ -145,7 +145,7 @@ function FaqSection({
 const faqQuestions = [
   {
     question: "What Mutual fund Transaction Providers do you Support?",
-    answer: "Our Transaction production is powered by Fintech Primitive APIs.",
+    answer: "Our Transaction production is powered by Fintech Primitives APIs.",
   },
   {
     question: "How can I go live in minutes to start MF distribution online?",
