@@ -2,6 +2,7 @@ import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import { GridBackground } from "@repo/ui/components/grid-background";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { Button } from "@repo/shadcn/components/button";
 import { FloatingPaths } from "@repo/shadcn/components/kokonutui/background-paths";
 
@@ -51,9 +52,15 @@ export default function RightImage() {
             efficiently.
           </p>
 
-          <Button className="rounded-full">
-            Get Started <ArrowRightIcon />
-          </Button>
+          <Link
+            href="https://cal.com/varsha.pius"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="rounded-full">
+              Connect Now <ArrowRightIcon />
+            </Button>
+          </Link>
         </div>
 
         <div className="absolute bottom-60 left-56 col-start-2 h-[580px] w-[920px] overflow-hidden rounded-4xl shadow-2xl">
