@@ -298,7 +298,7 @@ const AnimatedGradientDemo: React.FC = () => {
           </div>
           <BentoCard
             title="Investor Metrics"
-            value="Traction"
+            value="Tractions"
             subtitle="Signups, SIPs, AUM & more"
             colors={["#60A5FA", "#34D399", "#93C5FD"]}
             delay={0.4}
