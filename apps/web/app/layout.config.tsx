@@ -1,9 +1,9 @@
 import { Icons } from "@/components/icons";
 import type { BaseLayoutProps, LinkItemType } from "fumadocs-ui/layouts/shared";
 
-export const title = "mfstack";
+export const title = "MF Stack:Scale your Mutual Fund Distribution Online";
 export const description =
-  "Personal website of MFStack. This is where I articulate my work, open source projects, thoughts, ideas, work, commentary and opinions.";
+  "Distribute Mutual Funds Online in Minutes. Distributor Web Apps, Investor Web & Mobile Apps. Your Investors, Your AUM, Your Data.";
 export const owner = "MFStack";
 /**
  * Shared layout configurations
