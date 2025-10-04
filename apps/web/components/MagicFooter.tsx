@@ -315,7 +315,7 @@ const AnimatedGradientDemo: React.FC = () => {
               title="Cheaper yet powerful"
               value={
                 <span>
-                  <span className="text-sm">Starts at</span> ₹2,000
+                  <span className="text-sm">Starts at</span> ₹5,000
                 </span>
               }
               subtitle="Affordable. Scalable. Powerful. Reliable."
